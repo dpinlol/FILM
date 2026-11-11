@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruang Editing — Studi Kasus 9 &amp; 12</title>
+<meta name="description" content="Situs pembelajaran produksi film: memilih ukuran gambar untuk menampilkan emosi, dan menyeimbangkan musik latar agar dialog tetap terdengar.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span>Ruang Editing</span>
+  <span class="topbar-mid">Studi Kasus 9 &amp; 12 · Produksi Film Pendek</span>
+  <span>XII PPLG 2 — Devin &amp; Hosea</span>
+</header>
+
+<main>
+
+  <section class="hero" id="top">
+    <canvas id="heroLensCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <img class="hero-img" src="assets/hero.jpg" alt="Cuplikan film bisu The Kid (1921) karya Charlie Chaplin" aria-hidden="true">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="vf-grid" aria-hidden="true"></div>
+    <div class="vf-crosshair" aria-hidden="true"></div>
+    <i class="vf-c tl" aria-hidden="true"></i><i class="vf-c tr" aria-hidden="true"></i><i class="vf-c bl" aria-hidden="true"></i><i class="vf-c br" aria-hidden="true"></i>
+    <div class="hero-hud top" aria-hidden="true">
+      <div class="hud-group">
+        <span class="hud-item hud-rec"><i class="dot rec-pulse"></i>REC</span>
+        <span class="hud-item">24.000 FPS</span>
+        <span class="hud-item hide-mobile">SHUTTER 180°</span>
+        <span class="hud-item hide-mobile">ISO 800</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-item hide-mobile">THE KID · 1921</span>
+        <span class="hud-item hud-lens hide-mobile">50 mm · f/2.0</span>
+        <span class="badge" id="heroCode">MS</span>
+      </div>
+    </div>
+    <div class="hero-hud btm" aria-hidden="true">
+      <div class="hud-group">
+        <span class="hud-item">SCENE 01 / TAKE 02 · 1.33:1</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-item hud-tc">TC 00:19:21:04</span>
+      </div>
+    </div>
+    <div class="hero-text wrap">
+      <h1>Satu adegan, dua keputusan: <br class="hide-mobile">jarak kamera dan volume musik.</h1>
+      <p class="lead">Dua studi kasus produksi film pendek. Menentukan ukuran gambar agar ekspresi pemain terbaca, dan menyeimbangkan musik latar agar dialog tetap terdengar.</p>
+      <nav class="hero-nav" aria-label="Pilih studi kasus">
+        <a class="cine-action primary" href="#kasus-12">
+          <span class="cine-num">12</span>
+          <span class="cine-body">
+            <span class="cine-label">Kasus 12 · Sinematografi</span>
+            <span class="cine-title">Simulasi Framing Kamera</span>
+          </span>
+          <span class="cine-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a class="cine-action secondary" href="#kasus-9">
+          <span class="cine-num">09</span>
+          <span class="cine-body">
+            <span class="cine-label">Kasus 09 · Tata Suara</span>
+            <span class="cine-title">Konsol Audio Film</span>
+          </span>
+          <span class="cine-arrow" aria-hidden="true">↓</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <section id="kasus-12" class="case wrap">
+    <div class="case-side">
+      <span class="case-num" aria-hidden="true">12</span>
+      <p class="kicker">Studi Kasus 12 · Sinematografi</p>
+      <h2>Memperlihatkan ekspresi wajah pemain</h2>
+      <p class="situation"><b>Situasi.</b> Dalam sebuah film pendek, seorang siswa menerima kabar bahwa ia berhasil mendapatkan beasiswa. Sutradara ingin memperlihatkan ekspresi bahagia dan air mata haru pada wajah siswa tersebut.</p>
+      <p class="hint">Coba keempat ukuran gambar di samping, lalu bandingkan luas area yang benar-benar terlihat di kotak kecil kanan bawah.</p>
+    </div>
+
+    <div class="case-body">
+      <figure class="framing">
+        <div class="vf viewer" id="viewer">
+          <img id="frame" src="assets/frame.jpg" alt="Cuplikan film bisu: seorang anak laki-laki menangis, dipakai untuk simulasi ukuran gambar.">
+          <div class="vf-grid" aria-hidden="true"></div>
+          <i class="vf-c tl" aria-hidden="true"></i><i class="vf-c tr" aria-hidden="true"></i><i class="vf-c bl" aria-hidden="true"></i><i class="vf-c br" aria-hidden="true"></i>
+          <span class="vf-rec" aria-hidden="true"><i class="dot"></i>SIM</span>
+          <span class="badge" id="frameLabel">CU</span>
+          <span class="vf-lens" id="lensReadout" aria-hidden="true">85 mm · f/2.0 · eye level</span>
+          <div class="minimap" aria-hidden="true">
+            <img src="assets/frame.jpg" alt="">
+            <span class="minimap-rect" id="miniRect"></span>
+          </div>
+        </div>
+        <div class="sizes" role="group" aria-label="Ukuran gambar">
+          <button type="button" data-scale="1" data-code="LS">Long Shot</button>
+          <button type="button" data-scale="1.7" data-code="MS">Medium Shot</button>
+          <button type="button" data-scale="2.8" data-code="CU" aria-pressed="true">Close Up</button>
+          <button type="button" data-scale="4.2" data-code="BCU">Big Close Up</button>
+        </div>
+        <figcaption id="frameCaption">Dagu sampai atas kepala. Senyum dan mata mulai menjadi pusat perhatian; latar berhenti mengganggu.</figcaption>
+      </figure>
+
+      <div class="answers">
+        <article class="qa">
+          <p class="q"><span>01</span>Ukuran gambar apa yang paling tepat?</p>
+          <p class="a"><b>Close Up (CU)</b> — dari bahu atau dagu hingga bagian atas kepala — lalu dilanjutkan <b>Big Close Up (BCU)</b> yang berfokus pada mata dan pipi saat air mata mulai terlihat. CU memindahkan perhatian dari ruangan ke wajah; BCU mempertajam momen air mata itu sendiri.</p>
+        </article>
+        <article class="qa">
+          <p class="q"><span>02</span>Bagaimana posisi kamera?</p>
+          <p class="a">Kamera sejajar dengan mata (<i>eye level</i>) dan berada dekat dengan subjek, dengan fokus dikunci pada mata agar perhatian penonton tertuju ke wajah pemain. Secara teknis: lensa 50–85&nbsp;mm, bukaan lebar (f/1.8–2.8) untuk melembutkan latar, dan cahaya utama dari samping supaya air mata memantulkan cahaya.</p>
+        </article>
+        <article class="qa">
+          <p class="q"><span>03</span>Mengapa gambar jarak jauh kurang tepat?</p>
+          <p class="a">Long Shot atau Wide Shot membuat wajah pemain terlalu kecil: senyuman dan air mata sulit terlihat. Selain itu perhatian penonton teralihkan oleh latar belakang dan lingkungan, sehingga emosi pemain tidak tersampaikan dengan baik.</p>
+        </article>
+        <article class="qa">
+          <p class="q"><span>04</span>Apa manfaat pengambilan gambar ini?</p>
+          <ul class="a list">
+            <li>Menampilkan emosi dan detail ekspresi wajah dengan jelas.</li>
+            <li>Membangun kedekatan dan empati penonton terhadap tokoh.</li>
+            <li>Menekankan momen penting atau titik emosional dalam cerita.</li>
+            <li>Memusatkan perhatian penonton pada hal yang paling penting.</li>
+          </ul>
+        </article>
+      </div>
+
+      <aside class="note">
+        <p>Air mata tidak hanya soal lensa. Menurunkan musik, atau memberi hening sesaat sebelum potongan ke BCU, sering kali yang membuat momen itu terasa — karena perhatian penonton sudah diarahkan sebelum wajah memenuhi layar.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="kasus-9" class="case wrap">
+    <div class="case-side">
+      <span class="case-num" aria-hidden="true">9</span>
+      <p class="kicker">Studi Kasus 9 · Tata Suara</p>
+      <h2>Musik latar menutupi dialog</h2>
+      <p class="situation"><b>Situasi.</b> Dalam proses editing film pendek, editor menambahkan musik latar dengan volume tinggi. Akibatnya, suara percakapan antartokoh tidak terdengar jelas.</p>
+      <p class="hint">Nyalakan konsol, geser fader musik ke atas, lalu coba aktifkan <i>ducking</i> dan dengarkan bedanya.</p>
+    </div>
+
+    <div class="case-body">
+      <div class="mixer" id="mixer">
+        <div class="mixer-top">
+          <button type="button" class="play" id="playBtn" aria-pressed="false">▶ Putar</button>
+          <span class="timecode" id="timecode">00:00:00</span>
+          <span class="verdict" id="verdict">dialog tertutup musik</span>
+        </div>
+
+        <div class="channels">
+          <div class="channel">
+            <div class="ch-head">
+              <label class="ch-tag" for="dialogFader">Dialog</label>
+              <output id="dialogOut">0 dB</output>
+            </div>
+            <div class="ch-meter" aria-hidden="true"><i id="dialogMeter"></i></div>
+            <input type="range" id="dialogFader" min="-30" max="0" step="1" value="0">
+          </div>
+          <div class="channel">
+            <div class="ch-head">
+              <label class="ch-tag" for="musicFader">Musik</label>
+              <output id="musicOut">−4 dB</output>
+            </div>
+            <div class="ch-meter" aria-hidden="true"><i id="musicMeter"></i></div>
+            <input type="range" id="musicFader" min="-40" max="0" step="1" value="-4">
+          </div>
+        </div>
+
+        <div class="mixer-visualizer" id="mixerVisualizer">
+          <div class="scope-header">
+            <div class="scope-info">
+              <span class="scope-tag">Vektor Skope 3D · Stereo &amp; Dialog</span>
+              <span class="scope-desc hide-mobile">Analisis medan spasial frekuensi real-time</span>
+            </div>
+            <span class="scope-status" id="scopeStatus">STANDBY</span>
+          </div>
+          <div class="scope-stage">
+            <canvas id="audioScopeCanvas" class="audio-scope-canvas" aria-hidden="true"></canvas>
+            <div class="scope-overlay" aria-hidden="true">
+              <span class="axis-tag axis-l">L (Musik)</span>
+              <span class="axis-tag axis-c">CENTER (Dialog)</span>
+              <span class="axis-tag axis-r">R (Musik)</span>
+            </div>
+          </div>
+          <p class="scope-caption">Grafik 3D memetakan medan stereo: musik menyebar ke sumbu L/R, sementara dialog berpusat di sumbu tengah. Saat ducking aktif, energi musik mengerut agar dialog memotong jelas.</p>
+        </div>
+
+        <label class="switch">
+          <input type="checkbox" id="duckToggle" checked>
+          <span>Ducking (keyframe volume): musik turun 12 dB otomatis saat ada dialog</span>
+        </label>
+
+        <p class="mixer-note">Simulasi. Dialog dibacakan oleh suara bawaan peramban (id-ID bila tersedia); musik adalah rekaman domain publik yang dipotong 30 detik. Angka pada fader adalah level relatif, bukan LUFS.</p>
+      </div>
+
+      <div class="answers">
+        <article class="qa">
+          <p class="q"><span>01</span>Apa kesalahan yang dilakukan editor?</p>
+          <p class="a">Musik latar diatur terlalu tinggi dan tidak diseimbangkan dengan volume dialog. Dialog adalah pembawa cerita; begitu musik menimpanya, penonton kehilangan informasi — bukan sekadar kenyamanan.</p>
+        </article>
+        <article class="qa">
+          <p class="q"><span>02</span>Bagaimana mengatur keseimbangan suara?</p>
+          <ul class="a list">
+            <li>Jadikan dialog prioritas: jaga levelnya stabil dan jelas.</li>
+            <li>Turunkan musik <b>±10–30%</b> dari level dialog — dalam praktik mixing sekitar <b>−12 s.d. −18 dB</b>.</li>
+            <li>Gunakan <i>fade in</i>, <i>fade out</i>, dan keyframe volume supaya musik naik saat tidak ada dialog dan turun saat percakapan berlangsung (<i>ducking</i>).</li>
+            <li>Pisahkan track dialog, musik, dan efek suara pada timeline.</li>
+            <li>Periksa hasil audio dengan headphone dan speaker untuk memastikan suara terdengar seimbang.</li>
+            <li>Tambahan: sisakan ruang frekuensi 1–4&nbsp;kHz untuk dialog (turunkkan sedikit di track musik) dan targetkan loudness akhir sekitar −14&nbsp;LUFS untuk platform web.</li>
+          </ul>
+        </article>
+        <article class="qa">
+          <p class="q"><span>03</span>Apa fungsi audio mixing?</p>
+          <p class="a">Audio mixing adalah proses menggabungkan dan menyeimbangkan seluruh elemen suara — dialog, musik, efek suara, dan ambience — menjadi satu audio yang utuh.</p>
+          <ul class="a list">
+            <li>Mengatur level volume setiap elemen agar seimbang.</li>
+            <li>Menjaga kejelasan dialog agar mudah dipahami.</li>
+            <li>Menciptakan suasana dan kedalaman suara.</li>
+            <li>Menghasilkan kualitas audio akhir yang konsisten dan nyaman didengar.</li>
+          </ul>
+        </article>
+        <article class="qa">
+          <p class="q"><span>04</span>Mengapa musik latar tidak boleh mendominasi dialog?</p>
+          <p class="a">Musik latar berfungsi sebagai pendukung untuk memperkuat emosi dan suasana. Jika volumenya terlalu tinggi, penonton sulit memahami percakapan, alur cerita menjadi kurang jelas, dan pesan film tidak tersampaikan. Suara yang terlalu keras juga membuat penonton terganggu atau lelah menonton.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="ringkasan" class="summary wrap">
+    <p class="kicker">Ringkasan</p>
+    <h2>Masalah, prinsip, angka.</h2>
+    <table>
+      <thead>
+        <tr><th scope="col">Kasus</th><th scope="col">Masalah</th><th scope="col">Prinsip</th><th scope="col">Praktik</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12</td>
+          <td>Emosi wajah tidak terbaca</td>
+          <td>Dekatkan kamera, kunci fokus pada mata</td>
+          <td>CU → BCU, eye level, lensa 50–85&nbsp;mm, f/1.8–2.8</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Dialog tenggelam oleh musik</td>
+          <td>Dialog prioritas; musik mengalah saat ada dialog</td>
+          <td>Musik −12 s.d. −18&nbsp;dB, ducking, EQ 1–4&nbsp;kHz, −14&nbsp;LUFS</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div>
+    <p>Media: cuplikan dari <i>The Kid</i> (1921, domain publik, via Internet Archive) dan <i>Nocturne in E-flat major, Op.&nbsp;9 No.&nbsp;2</i> — Frédéric Chopin, rekaman domain publik via Wikimedia Commons.</p>
+    <p>Gambar diberi tanda sebagai simulasi: CU dan BCU pada umumnya adalah pengambilan terpisah, bukan hasil perbesaran satu frame.</p>
+  </div>
+  <p class="credit">Devin Nathannael Lie &amp; Hosea — XII PPLG 2</p>
+</footer>
+
+<script src="assets/three.min.js"></script>
+<script src="assets/gsap.min.js"></script>
+<script src="assets/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
